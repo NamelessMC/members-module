@@ -1,0 +1,11 @@
+{
+    "name": "aberdeener/nameless-composer-module",
+    "type": "nameless-module",
+    "authors": [
+        {
+            "name": "Tadhg Boyle",
+            "email": "tadhgsmboyle@gmail.com"
+        }
+    ],
+    "require": {}
+}
