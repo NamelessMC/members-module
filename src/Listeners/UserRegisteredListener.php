@@ -2,7 +2,7 @@
 
 namespace NamelessMC\Members\Listeners;
 
-class UserRegisteredListener extends Listener
+class UserRegisteredListener // extends Listener
 {
     private Cache $cache;
 
