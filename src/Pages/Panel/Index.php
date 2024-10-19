@@ -1,7 +1,9 @@
 <?php
 
 namespace NamelessMC\Members\Pages\Panel;
+
 use NamelessMC\Members\MemberListManager;
+use NamelessMC\Framework\Pages\PanelPage;
 
 class Index extends PanelPage {
 

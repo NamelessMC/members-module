@@ -2,6 +2,8 @@
 
 namespace NamelessMC\Members\Pages\Panel;
 
+use NamelessMC\Framework\Pages\PanelPage;
+
 class Settings extends PanelPage {
 
     private Smarty $smarty;

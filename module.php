@@ -21,4 +21,6 @@ return [
         ->register(\NamelessMC\Members\DebugInfo\Provider::class),
     (new Extend\Events)
         ->listen(UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
+    (new Extend\Container)
+        ->singleton(\NamelessMC\Members\MemberListManager::class),
 ];

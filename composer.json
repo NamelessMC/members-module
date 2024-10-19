@@ -9,7 +9,8 @@
     ],
     "extra": {
         "nameless_module": {
-            "name": "Members",
+            "display_name": "Members",
+            "name": "members",
             "description": "Adds member lists to your website.",
             "nameless_version": "^2.1"
         }

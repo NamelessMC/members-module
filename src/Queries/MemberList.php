@@ -20,9 +20,9 @@ class MemberList extends Query {
     }
 
     public function handle(): void {
-        $list = $this->data['list'];
-        $overview = $this->data['overview'] ?? false;
-        $page = $this->data['page'] ?? 1;
+        $list = $_GET['list'];
+        $overview = $_GET['overview'] ?? false;
+        $page = $_GET['page'] ?? 1;
 
         $this->json($this->cache->fetch($this->cacheKey($list, $page, $overview), 60, function () use ($list, $overview, $page) {
             if (str_starts_with($list, 'group_')) {

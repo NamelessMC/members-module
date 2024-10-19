@@ -2,6 +2,7 @@
 
 namespace NamelessMC\Members\Pages;
 
+use NamelessMC\Framework\Pages\FrontendPage;
 use NamelessMC\Members\MemberListManager;
 use NamelessMC\Members\MemberListProvider;
 
