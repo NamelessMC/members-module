@@ -13,7 +13,7 @@ return [
         ->register('/member_list', \NamelessMC\Members\Queries\MemberList::class),
     (new Extend\Permissions)
         ->register([
-            'admin' => [
+            'staffcp' => [
                 'admincp.members' => 'members/member_lists',
             ],
         ]),
