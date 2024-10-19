@@ -18,7 +18,7 @@ return [
             ],
         ]),
     (new Extend\DebugInfo)
-        ->register(\NamelessMC\Members\DebugInfo\Provider::class),
+        ->provide(\NamelessMC\Members\DebugInfo\Provider::class),
     (new Extend\Events)
         ->listen(UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
     (new Extend\Container)
