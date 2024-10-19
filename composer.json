@@ -11,7 +11,6 @@
         "nameless_module": {
             "name": "Members",
             "description": "Adds member lists to your website.",
-            "version": "1.0.0",
             "nameless_version": "^2.1"
         }
     },
