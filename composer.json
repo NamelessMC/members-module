@@ -4,8 +4,21 @@
     "authors": [
         {
             "name": "Tadhg Boyle",
-            "email": "tadhgsmboyle@gmail.com"
+            "homepage": "https://github.com/tadhgboyle"
         }
     ],
-    "require": {}
+    "extra": {
+        "nameless_module": {
+            "name": "Members",
+            "description": "Adds member lists to your website.",
+            "version": "1.0.0",
+            "nameless_version": "^2.1"
+        }
+    },
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "NamelessMC\\Members\\": "src/"
+        }
+    }
 }
