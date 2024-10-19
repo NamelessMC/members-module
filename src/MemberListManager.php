@@ -2,6 +2,9 @@
 
 namespace NamelessMC\Members;
 
+use Closure;
+use RuntimeException;
+
 /**
  * Member list providers manager. Provides a way to register and retrieve member list providers.
  * @see MemberListProvider
@@ -11,7 +14,7 @@ namespace NamelessMC\Members;
  * @version 2.1.0
  * @license MIT
  */
-class MemberListManager extends Instanceable {
+class MemberListManager {
 
     private array $_lists = [];
 
