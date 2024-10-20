@@ -13,7 +13,7 @@
             "name": "members",
             "description": "Adds member lists to your website.",
             "version": "2.1.2",
-            "nameless_version": "^2.1"
+            "nameless_version": "2.1.0"
         }
     },
     "require": {},
