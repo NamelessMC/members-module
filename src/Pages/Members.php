@@ -138,6 +138,8 @@ class Members extends FrontendPage {
             return $b->displayOnOverview() - $a->displayOnOverview();
         });
 
+        dd($this->coreLanguage, $this->membersLanguage);
+
         $this->smarty->assign([
             'MEMBERS' => $this->membersLanguage->get('members', 'members'),
             'SIDEBAR_MEMBER_LISTS' => $sidebar_lists,
