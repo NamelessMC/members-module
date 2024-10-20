@@ -28,7 +28,7 @@ class Settings extends PanelPage {
     }
 
     public function viewFile(): string {
-        return 'panel/settings.tpl';
+        return 'settings.tpl';
     }
 
     public function pageName(): string {
