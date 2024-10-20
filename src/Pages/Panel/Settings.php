@@ -73,9 +73,6 @@ class Settings extends PanelPage {
         $this->cache->setCache('nav_location');
         $link_location = $this->cache->retrieve('members_location');
 
-        // Load modules + template
-        // Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
-
         if (\Session::exists('admin_members_settings')) {
             $this->smarty->assign([
                 'SUCCESS' => \Session::flash('admin_members_settings'),
