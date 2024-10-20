@@ -40,6 +40,8 @@ class Members extends FrontendPage {
         $this->cache = $cache;
         $this->memberListManager = $memberListManager;
 
+        dd($this->memberListManager);
+
         $this->cache->setCache('member_lists');
     }
 
