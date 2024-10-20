@@ -7,15 +7,15 @@ use NamelessMC\Framework\Pages\PanelPage;
 
 class Index extends PanelPage {
 
-    private Smarty $smarty;
-    private Language $coreLanguage;
-    private Language $membersLanguage;
+    private \Smarty $smarty;
+    private \Language $coreLanguage;
+    private \Language $membersLanguage;
     private MemberListManager $memberListManager;
 
     public function __construct(
-        Smarty $smarty,
-        Language $coreLanguage,
-        Language $membersLanguage,
+        \Smarty $smarty,
+        \Language $coreLanguage,
+        \Language $membersLanguage,
         MemberListManager $memberListManager,
     ) {
         $this->smarty = $smarty;

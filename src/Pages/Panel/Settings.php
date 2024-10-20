@@ -6,16 +6,16 @@ use NamelessMC\Framework\Pages\PanelPage;
 
 class Settings extends PanelPage {
 
-    private Smarty $smarty;
-    private Cache $cache;
-    private Language $coreLanguage;
-    private Language $membersLanguage;
+    private \Smarty $smarty;
+    private \Cache $cache;
+    private \Language $coreLanguage;
+    private \Language $membersLanguage;
 
     public function __construct(
-        Smarty $smarty,
-        Cache $cache,
-        Language $coreLanguage,
-        Language $membersLanguage,
+        \Smarty $smarty,
+        \Cache $cache,
+        \Language $coreLanguage,
+        \Language $membersLanguage,
     ) {
         $this->smarty = $smarty;
         $this->cache = $cache;

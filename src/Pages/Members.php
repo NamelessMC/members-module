@@ -8,17 +8,17 @@ use NamelessMC\Members\MemberListProvider;
 
 class Members extends FrontendPage {
 
-    private Smarty $smarty;
-    private Language $coreLanguage;
-    private Language $membersLanguage;
-    private Cache $cache;
+    private \Smarty $smarty;
+    private \Language $coreLanguage;
+    private \Language $membersLanguage;
+    private \Cache $cache;
     private MemberListManager $memberListManager;
 
     public function __construct(
-        Smarty $smarty,
-        Language $coreLanguage,
-        Language $membersLanguage,
-        Cache $cache,
+        \Smarty $smarty,
+        \Language $coreLanguage,
+        \Language $membersLanguage,
+        \Cache $cache,
         MemberListManager $memberListManager,
     ) {
         $this->smarty = $smarty;
