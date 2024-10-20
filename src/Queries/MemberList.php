@@ -25,7 +25,7 @@ class MemberList extends Query {
         $overview = $_GET['overview'] ?? false;
         $page = $_GET['page'] ?? 1;
 
-        $this->json($this->cache->fetch($this->cacheKey($list, $page, $overview), 60, function () use ($list, $overview, $page) {
+        $this->json($this->cache->fetch($this->cacheKey($list, $page, $overview), function () use ($list, $overview, $page) {
             if (str_starts_with($list, 'group_')) {
                 $members = $this->memberListManager->getList((int) substr($list, 6), true)->getMembers(false, $page);
             } else {
@@ -33,7 +33,7 @@ class MemberList extends Query {
             }
 
             return $members;
-        }));
+        }), 60);
     }
 
     private function cacheKey(string $list, int $page, bool $overview): string {
