@@ -141,7 +141,7 @@ class Members extends FrontendPage {
             'MEMBER_LISTS_VIEWING' => $lists_viewing,
             'VIEWING_LIST' => $viewing_list,
             'MEMBER_LIST_URL' => \URL::build('/members'),
-            'QUERIES_URL' => \URL::build('/queries/members/member_list', 'list={{list}}&page={{page}}&overview=' . ($viewing_list === 'overview' ? 'true' : 'false')),
+            'QUERIES_URL' => \URL::build('/queries/members/member_list', 'list={{list}}&page={{page}}' . ($viewing_list === 'overview' ? '&overview=true' : '')),
             'OVERVIEW' => $this->coreLanguage->get('user', 'overview'),
             'VIEW_ALL' => $this->membersLanguage->get('members', 'view_all'),
             'GROUPS' => $groups,
