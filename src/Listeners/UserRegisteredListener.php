@@ -12,8 +12,6 @@ class UserRegisteredListener extends Listener
         \Cache $cache
     ) {
         $this->cache = $cache;
-
-        $this->cache->setCache('member_lists');
     }
 
     public function handle(\UserRegisteredEvent $event): void {
@@ -26,8 +24,8 @@ class UserRegisteredListener extends Listener
         }
 
         $new_member_ids = array_map(static fn ($row) => $row->id, $query->results());
-        $this->cache->store($cacheKey, $new_member_ids);
 
-        dd($this->cache->getCache(), $this->cache->retrieveAll(), $cacheKey, $new_member_ids);
+        $this->cache->setCache('member_lists');
+        $this->cache->store($cacheKey, $new_member_ids);
     }
 }
