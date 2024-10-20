@@ -46,6 +46,10 @@ class Members extends FrontendPage {
         $this->cache->setCache('member_lists');
     }
 
+    public function viewFile(): string {
+        return 'members/members.tpl';
+    }
+
     public function render() {
         //const PAGE = 'members';
         //$page_title = $this->membersLanguage->get('members', 'members');

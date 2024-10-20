@@ -23,4 +23,5 @@ return [
         ->listen(UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
     (new Extend\Container)
         ->singleton(\NamelessMC\Members\MemberListManager::class),
+    // TODO: assets? see if anything in AssetTree can be extracted here
 ];
