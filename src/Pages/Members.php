@@ -18,6 +18,7 @@ use \Paginator;
 
 class Members extends FrontendPage {
 
+    private \TemplateBase $template;
     private \User $user;
     private \Smarty $smarty;
     private \Language $coreLanguage;
@@ -26,6 +27,7 @@ class Members extends FrontendPage {
     private MemberListManager $memberListManager;
 
     public function __construct(
+        \DI\Container $container,
         \User $user,
         \Smarty $smarty,
         \Language $coreLanguage,
@@ -33,6 +35,7 @@ class Members extends FrontendPage {
         \Cache $cache,
         MemberListManager $memberListManager,
     ) {
+        $this->template = $container->get('FrontendTemplate');
         $this->user = $user;
         $this->smarty = $smarty;
         $this->coreLanguage = $coreLanguage;
