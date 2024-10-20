@@ -49,7 +49,7 @@ class Index extends PanelPage {
                     'list' => $list->getFriendlyName(),
                 ]));
 
-                \Redirect::to(\URL::build('/panel/members/member_lists'));
+                \Redirect::to(\URL::build('/panel/members'));
             } else {
                 \Session::flash('admin_member_lists_error', $this->coreLanguage->get('general', 'invalid_token'));
             }
