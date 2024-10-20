@@ -24,6 +24,7 @@ class Members extends FrontendPage {
     private \Language $membersLanguage;
     private \Cache $cache;
     private MemberListManager $memberListManager;
+    private array $templatePagination;
 
     public function __construct(
         \User $user,
@@ -32,6 +33,7 @@ class Members extends FrontendPage {
         \Language $membersLanguage,
         \Cache $cache,
         MemberListManager $memberListManager,
+        $templatePagination,
     ) {
         $this->user = $user;
         $this->smarty = $smarty;
@@ -39,6 +41,8 @@ class Members extends FrontendPage {
         $this->membersLanguage = $membersLanguage;
         $this->cache = $cache;
         $this->memberListManager = $memberListManager;
+        $this->templatePagination = $templatePagination;
+        $this->templatePagination['div'] = $this->templatePagination['div'] .= ' centered';
 
         $this->cache->setCache('member_lists');
     }
@@ -117,11 +121,8 @@ class Members extends FrontendPage {
                 ? 'group=' . $_GET['group']
                 : 'list=' . $viewing_list;
 
-            // $template_pagination['div'] = $template_pagination['div'] .= ' centered';
             $paginator = new \Paginator(
-                $template_pagination ?? null,
-                $template_pagination_left ?? null,
-                $template_pagination_right ?? null
+                $this->templatePagination,
             );
             $paginator->setValues($member_count, 20, $_GET['p'] ?? 1);
             $this->smarty->assign([
