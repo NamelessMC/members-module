@@ -6,7 +6,7 @@ use NamelessMC\Members\MemberListManager;
 
 class MemberList extends Query {
 
-    private Cache $cache;
+    private \Cache $cache;
     private MemberListManager $memberListManager;
 
     public function __construct(

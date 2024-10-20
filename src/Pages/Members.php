@@ -18,30 +18,20 @@ use \Paginator;
 
 class Members extends FrontendPage {
 
-    private Smarty $smarty;
-    private Language $coreLanguage;
     private Language $membersLanguage;
-    private Cache $cache;
     private MemberListManager $memberListManager;
 
     public function __construct(
-        Smarty $smarty,
-        Language $coreLanguage,
         Language $membersLanguage,
-        Cache $cache,
         MemberListManager $memberListManager,
     ) {
-        $this->smarty = $smarty;
-        $this->coreLanguage = $coreLanguage;
         $this->membersLanguage = $membersLanguage;
-        $this->cache = $cache;
         $this->memberListManager = $memberListManager;
 
         $this->cache->setCache('member_lists');
     }
 
     public function render() {
-        dd('in the module controller! :O');
         //const PAGE = 'members';
         //$page_title = $this->membersLanguage->get('members', 'members');
         //require_once(ROOT_PATH . '/core/templates/frontend_init.php');
@@ -135,7 +125,7 @@ class Members extends FrontendPage {
             'MEMBER_LISTS_VIEWING' => $lists_viewing,
             'VIEWING_LIST' => $viewing_list,
             'MEMBER_LIST_URL' => URL::build('/members'),
-            'QUERIES_URL' => URL::build('/queries/member_list', 'list={{list}}&page={{page}}&overview=' . ($viewing_list === 'overview' ? 'true' : 'false')),
+            'QUERIES_URL' => URL::build('/queries/members/member_list', 'list={{list}}&page={{page}}&overview=' . ($viewing_list === 'overview' ? 'true' : 'false')),
             'OVERVIEW' => $this->coreLanguage->get('user', 'overview'),
             'VIEW_ALL' => $this->membersLanguage->get('members', 'view_all'),
             'GROUPS' => $groups,
