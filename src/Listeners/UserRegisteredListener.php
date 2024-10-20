@@ -2,7 +2,9 @@
 
 namespace NamelessMC\Members\Listeners;
 
-class UserRegisteredListener // extends Listener
+use NamelessMC\Framework\Events\Listener;
+
+class UserRegisteredListener extends Listener
 {
     private \Cache $cache;
 
