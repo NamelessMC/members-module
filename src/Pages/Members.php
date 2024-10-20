@@ -28,8 +28,8 @@ class Members extends FrontendPage {
     public function __construct(
         \User $user,
         \Smarty $smarty,
-        $coreLanguage,
-        $membersLanguage,
+        \Language $coreLanguage,
+        \Language $membersLanguage,
         \Cache $cache,
         MemberListManager $memberListManager,
     ) {
