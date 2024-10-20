@@ -2,6 +2,7 @@
 
 namespace NamelessMC\Members\Queries;
 
+use NamelessMC\Framework\Queries\Query;
 use NamelessMC\Members\MemberListManager;
 
 class MemberList extends Query {
@@ -10,7 +11,7 @@ class MemberList extends Query {
     private MemberListManager $memberListManager;
 
     public function __construct(
-        Cache $cache,
+        \Cache $cache,
         MemberListManager $memberListManager
     ) {
         $this->cache = $cache;
@@ -36,7 +37,7 @@ class MemberList extends Query {
     }
 
     private function cacheKey(string $list, int $page, bool $overview): string {
-        return ($list . '_page_' . $page) . ($overview ? '_overview' : '') . (Settings::get('member_list_hide_banned', false, 'Members') ? '_hide_banned' : '');
+        return ($list . '_page_' . $page) . ($overview ? '_overview' : '') . (\Settings::get('member_list_hide_banned', false, 'Members') ? '_hide_banned' : '');
     }
 }
 
