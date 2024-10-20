@@ -93,7 +93,7 @@ class Members extends FrontendPage {
             $new_members[] = new \User($new_member_id);
         }
 
-        dd($this->cache->retrieve($cacheKey), $new_members);
+        dd($this->cache->getCache(), $this->cache->retrieveAll(), $new_members);
 
         if (isset($error)) {
             $this->smarty->assign([
