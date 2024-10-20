@@ -27,13 +27,15 @@ class Settings extends PanelPage {
         return 'admincp.members';
     }
 
+    public function viewFile(): string {
+        return 'panel/settings.tpl';
+    }
+
+    public function pageName(): string {
+        return 'members_settings';
+    }
+
     public function render() {
-        // const PAGE = 'panel';
-        // const PARENT_PAGE = 'members';
-        // const PANEL_PAGE = 'members_settings';
-
-        // $page_title = $this->membersLanguage->get('members', 'members');
-
         if (\Input::exists()) {
             if (\Token::check()) {
                 \Settings::set('member_list_viewable_groups', json_encode(\Input::get('groups')), 'Members');
@@ -97,7 +99,6 @@ class Settings extends PanelPage {
         }
 
         $this->smarty->assign([
-            'PARENT_PAGE' => PARENT_PAGE,
             'DASHBOARD' => $this->coreLanguage->get('admin', 'dashboard'),
             'MEMBERS' => $this->membersLanguage->get('members', 'members'),
             'SETTINGS' => $this->coreLanguage->get('admin', 'settings'),
@@ -113,7 +114,6 @@ class Settings extends PanelPage {
             'GROUPS_ARRAY' => $group_array,
             'GROUPS_VALUE' => json_decode(\Settings::get('member_list_viewable_groups', '{}', 'Members'), true) ?: [],
             'NO_ITEM_SELECTED' => $this->coreLanguage->get('admin', 'no_item_selected'),
-            'PAGE' => PANEL_PAGE,
             'TOKEN' => \Token::get(),
             'SUBMIT' => $this->coreLanguage->get('general', 'submit'),
         ]);

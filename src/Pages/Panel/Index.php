@@ -28,6 +28,14 @@ class Index extends PanelPage {
         return 'admincp.members';
     }
 
+    public function viewFile(): string {
+        return 'panel/index.tpl';
+    }
+
+    public function pageName(): string {
+        return 'member_lists';
+    }
+
     public function render() {
         // if (!$user->handlePanelPageLoad('admincp.members')) {
         //     require_once(ROOT_PATH . '/403.php');
