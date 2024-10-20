@@ -5,20 +5,30 @@ namespace NamelessMC\Members\Pages;
 use NamelessMC\Framework\Pages\FrontendPage;
 use NamelessMC\Members\MemberListManager;
 use NamelessMC\Members\MemberListProvider;
+use \Smarty;
+use \Language;
+use \Cache;
+use \User;
+use \Group;
+use \Redirect;
+use \URL;
+use \Output;
+use \Settings;
+use \Paginator;
 
 class Members extends FrontendPage {
 
-    private \Smarty $smarty;
-    private \Language $coreLanguage;
-    private \Language $membersLanguage;
-    private \Cache $cache;
+    private Smarty $smarty;
+    private Language $coreLanguage;
+    private Language $membersLanguage;
+    private Cache $cache;
     private MemberListManager $memberListManager;
 
     public function __construct(
-        \Smarty $smarty,
-        \Language $coreLanguage,
-        \Language $membersLanguage,
-        \Cache $cache,
+        Smarty $smarty,
+        Language $coreLanguage,
+        Language $membersLanguage,
+        Cache $cache,
         MemberListManager $memberListManager,
     ) {
         $this->smarty = $smarty;
