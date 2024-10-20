@@ -101,10 +101,10 @@ class MemberListManager {
     /**
      * Get the metadata for a given user. Pipes the user through all registered metadata providers.
      *
-     * @param User $user The user to get the metadata for
+     * @param \User $user The user to get the metadata for
      * @return array The metadata for the given user
      */
-    public function getMemberMetadata(User $user): array {
+    public function getMemberMetadata(\User $user): array {
         $metadata = [];
         foreach ($this->_metadata_providers as $provider) {
             $metadata += $provider($user);

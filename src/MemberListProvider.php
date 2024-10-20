@@ -100,7 +100,7 @@ abstract class MemberListProvider {
      * @param int $page The page number to display, starting at 1 - pages are 20 members long
      * @return array An array of members to display on the member list page
      */
-    public function getMembers(bool $overview, int $page): array {
+    public function getMembers(bool $overview, int $page, MemberListManager $memberListManager): array {
         [$sql, $id_column, $count_column] = $this->generator();
 
         $rows = \DB::getInstance()->query($sql)->results();
@@ -134,7 +134,7 @@ abstract class MemberListProvider {
                     ? []
                     : [
                         'group_html' => $member->getAllGroupHtml(),
-                        'metadata' => \DI\Container::instance()->get(MemberListManager::class)->getMemberMetadata($member),
+                        'metadata' => $memberListManager->getMemberMetadata($member),
                     ],
             );
         }
