@@ -103,7 +103,7 @@ abstract class MemberListProvider {
     public function getMembers(bool $overview, int $page): array {
         [$sql, $id_column, $count_column] = $this->generator();
 
-        $rows = DB::getInstance()->query($sql)->results();
+        $rows = \DB::getInstance()->query($sql)->results();
         if (\Settings::get('member_list_hide_banned', false, 'Members')) {
             $rows = $this->filterBanned($rows, $id_column);
         }
