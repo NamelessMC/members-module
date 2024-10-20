@@ -18,7 +18,6 @@ use \Paginator;
 
 class Members extends FrontendPage {
 
-    private \TemplateBase $template;
     private \User $user;
     private \Smarty $smarty;
     private \Language $coreLanguage;
@@ -27,7 +26,6 @@ class Members extends FrontendPage {
     private MemberListManager $memberListManager;
 
     public function __construct(
-        \TemplateBase $template,
         \User $user,
         \Smarty $smarty,
         \Language $coreLanguage,
@@ -35,7 +33,6 @@ class Members extends FrontendPage {
         \Cache $cache,
         MemberListManager $memberListManager,
     ) {
-        $this->template = $template;
         $this->user = $user;
         $this->smarty = $smarty;
         $this->coreLanguage = $coreLanguage;
@@ -163,14 +160,6 @@ class Members extends FrontendPage {
         ]);
 
         // Load modules + template
-        \Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
-
-        $this->template->onPageLoad();
-
-        // require(ROOT_PATH . '/core/templates/navbar.php');
-        // require(ROOT_PATH . '/core/templates/footer.php');
-
-        // Display template
-        $this->template->displayTemplate('members/members.tpl', $this->smarty);
+        // \Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
     }
 }
