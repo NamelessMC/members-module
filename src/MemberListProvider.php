@@ -67,6 +67,7 @@ abstract class MemberListProvider {
      */
     public function isEnabled(): bool {
         if (isset($this->_enabled)) {
+            dd('isset', $this->_enabled);
             return $this->_enabled;
         }
 
@@ -79,8 +80,12 @@ abstract class MemberListProvider {
                 'enabled' => true,
             ]);
 
+            dd('inserted');
+
             return true;
         }
+
+        dd('enabled', $enabled);
 
         return $this->_enabled = $enabled;
     }

@@ -52,9 +52,6 @@ class Members extends FrontendPage {
     }
 
     public function render() {
-        //const PAGE = 'members';
-        //$page_title = $this->membersLanguage->get('members', 'members');
-
         if (isset($_GET['group'])) {
             if (!in_array($_GET['group'], json_decode(\Settings::get('member_list_viewable_groups', '{}', 'Members'), true))) {
                 \Redirect::to(\URL::build('/members'));
