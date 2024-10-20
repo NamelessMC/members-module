@@ -11,7 +11,7 @@ return [
         ->register('/', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
     (new Extend\PanelPages)
         ->register('/', 'member_lists', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class, 'admincp.members')
-        ->register('/settings', 'members_settings', 'members/members', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members'),
+        ->register('/settings', 'members_settings', 'members/member_list_settings', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members'),
     (new Extend\Queries)
         ->register('/member_list', \NamelessMC\Members\Queries\MemberList::class),
     (new Extend\Permissions)
