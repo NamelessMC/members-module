@@ -37,56 +37,42 @@ class Index extends PanelPage {
     }
 
     public function render() {
-        // if (!$user->handlePanelPageLoad('admincp.members')) {
-        //     require_once(ROOT_PATH . '/403.php');
-        //     die();
-        // }
-
-        // const PAGE = 'panel';
-        // const PARENT_PAGE = 'members';
-        // const PANEL_PAGE = 'member_lists_settings';
-
-        // $page_title = $this->membersLanguage->get('members', 'member_lists');
-        // require_once(ROOT_PATH . '/core/templates/backend_init.php');
-
-        if (Input::exists()) {
-            if (Token::check()) {
+        if (\Input::exists()) {
+            if (\Token::check()) {
                 $list = $this->memberListManager->getList($_POST['list']);
-                $enabled = DB::getInstance()->get('member_lists', ['name', $list->getName()])->first()->enabled;
-                DB::getInstance()->update('member_lists', ['name', $list->getName()], [
+                $enabled = \DB::getInstance()->get('member_lists', ['name', $list->getName()])->first()->enabled;
+                \DB::getInstance()->update('member_lists', ['name', $list->getName()], [
                     'enabled' => !$enabled
                 ]);
 
-                Session::flash('admin_member_lists_success', $this->membersLanguage->get('members', !$enabled ? 'member_list_toggled_enabled' : 'member_list_toggled_disabled', [
+                \Session::flash('admin_member_lists_success', $this->membersLanguage->get('members', !$enabled ? 'member_list_toggled_enabled' : 'member_list_toggled_disabled', [
                     'list' => $list->getFriendlyName(),
                 ]));
 
-                Redirect::to(URL::build('/panel/members/member_lists'));
+                \Redirect::to(\URL::build('/panel/members/member_lists'));
             } else {
-                Session::flash('admin_member_lists_error', $this->coreLanguage->get('general', 'invalid_token'));
+                \Session::flash('admin_member_lists_error', $this->coreLanguage->get('general', 'invalid_token'));
             }
         }
 
-        if (Session::exists('admin_member_lists_error')) {
+        if (\Session::exists('admin_member_lists_error')) {
             $this->smarty->assign([
-                'ERRORS' => [Session::flash('admin_member_lists_error')],
+                'ERRORS' => [\Session::flash('admin_member_lists_error')],
                 'ERRORS_TITLE' => $this->coreLanguage->get('general', 'error'),
             ]);
         }
 
-        if (Session::exists('admin_member_lists_success')) {
+        if (\Session::exists('admin_member_lists_success')) {
             $this->smarty->assign([
-                'SUCCESS' => Session::flash('admin_member_lists_success'),
+                'SUCCESS' => \Session::flash('admin_member_lists_success'),
                 'SUCCESS_TITLE' => $this->coreLanguage->get('general', 'success'),
             ]);
         }
 
         $this->smarty->assign([
-            'PARENT_PAGE' => PARENT_PAGE,
             'DASHBOARD' => $this->coreLanguage->get('admin', 'dashboard'),
             'MEMBERS' => $this->membersLanguage->get('members', 'members'),
             'MEMBER_LISTS' => $this->membersLanguage->get('members', 'member_lists'),
-            'PAGE' => PANEL_PAGE,
             'MEMBER_LISTS_VALUES' => $this->memberListManager->allLists(),
             'NAME' => $this->coreLanguage->get('admin', 'name'),
             'ENABLED' => $this->coreLanguage->get('admin', 'enabled'),
@@ -94,17 +80,7 @@ class Index extends PanelPage {
             'EDIT' => $this->coreLanguage->get('general', 'edit'),
             'ENABLE' => $this->coreLanguage->get('admin', 'enable'),
             'DISABLE' => $this->coreLanguage->get('admin', 'disable'),
-            'TOKEN' => Token::get(),
+            'TOKEN' => \Token::get(),
         ]);
-
-        // Load modules + template
-        // Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
-
-        // $template->onPageLoad();
-
-        // require(ROOT_PATH . '/core/templates/panel_navbar.php');
-
-        // Display template
-        // $template->displayTemplate('members/member_lists.tpl', $smarty);
     }
 }
