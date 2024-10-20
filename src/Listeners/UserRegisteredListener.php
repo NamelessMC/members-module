@@ -27,5 +27,7 @@ class UserRegisteredListener extends Listener
 
         $new_member_ids = array_map(static fn ($row) => $row->id, $query->results());
         $this->cache->store($cacheKey, $new_member_ids);
+
+        dd($new_member_ids, $event);
     }
 }
