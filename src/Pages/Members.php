@@ -52,16 +52,16 @@ class Members extends FrontendPage {
         //$page_title = $this->membersLanguage->get('members', 'members');
 
         if (isset($_GET['group'])) {
-            if (!in_array($_GET['group'], json_decode(Settings::get('member_list_viewable_groups', '{}', 'Members'), true))) {
-                Redirect::to(URL::build('/members'));
+            if (!in_array($_GET['group'], json_decode(\Settings::get('member_list_viewable_groups', '{}', 'Members'), true))) {
+                \Redirect::to(\URL::build('/members'));
             }
 
             $viewing_list = 'group';
-            $viewing_group = Group::find($_GET['group']);
+            $viewing_group = \Group::find($_GET['group']);
             $this->smarty->assign([
                 'VIEWING_GROUP' => [
                     'id' => $viewing_group->id,
-                    'name' => Output::getClean($viewing_group->name),
+                    'name' => \Output::getClean($viewing_group->name),
                 ],
             ]);
 
@@ -71,7 +71,7 @@ class Members extends FrontendPage {
             if ($viewing_list !== 'overview'
                 && (!$this->memberListManager->listExists($viewing_list) || !$this->memberListManager->getList($viewing_list)->isEnabled())
             ) {
-                Redirect::to(URL::build('/members'));
+                \Redirect::to(\URL::build('/members'));
             }
 
             $lists_viewing = $viewing_list === 'overview'
@@ -80,13 +80,13 @@ class Members extends FrontendPage {
         }
 
         $new_members = [];
-        if (Settings::get('member_list_hide_banned', false, 'Members')) {
+        if (\Settings::get('member_list_hide_banned', false, 'Members')) {
             $cacheKey = 'new_members_banned';
         } else {
             $cacheKey = 'new_members';
         }
         foreach ($this->cache->retrieve($cacheKey) as $new_member_id) {
-            $new_members[] = new User($new_member_id);
+            $new_members[] = new \User($new_member_id);
         }
 
         if (isset($error)) {
@@ -97,14 +97,14 @@ class Members extends FrontendPage {
         }
 
         $groups = [];
-        foreach (json_decode(Settings::get('member_list_viewable_groups', '{}', 'Members'), true) as $group_id) {
-            $group = Group::find($group_id);
+        foreach (json_decode(\Settings::get('member_list_viewable_groups', '{}', 'Members'), true) as $group_id) {
+            $group = \Group::find($group_id);
             if (!$group) {
                 continue;
             }
             $groups[] = [
                 'id' => $group->id,
-                'name' => Output::getClean($group->name),
+                'name' => \Output::getClean($group->name),
             ];
         }
 
@@ -117,14 +117,14 @@ class Members extends FrontendPage {
                 : 'list=' . $viewing_list;
 
             // $template_pagination['div'] = $template_pagination['div'] .= ' centered';
-            $paginator = new Paginator(
+            $paginator = new \Paginator(
                 $template_pagination ?? null,
                 $template_pagination_left ?? null,
                 $template_pagination_right ?? null
             );
             $paginator->setValues($member_count, 20, $_GET['p'] ?? 1);
             $this->smarty->assign([
-                'PAGINATION' => $paginator->generate(6, URL::build('/members/', $url_param)),
+                'PAGINATION' => $paginator->generate(6, \URL::build('/members/', $url_param)),
             ]);
         }
 
@@ -139,17 +139,17 @@ class Members extends FrontendPage {
             'SIDEBAR_MEMBER_LISTS' => $sidebar_lists,
             'MEMBER_LISTS_VIEWING' => $lists_viewing,
             'VIEWING_LIST' => $viewing_list,
-            'MEMBER_LIST_URL' => URL::build('/members'),
-            'QUERIES_URL' => URL::build('/queries/members/member_list', 'list={{list}}&page={{page}}&overview=' . ($viewing_list === 'overview' ? 'true' : 'false')),
+            'MEMBER_LIST_URL' => \URL::build('/members'),
+            'QUERIES_URL' => \URL::build('/queries/members/member_list', 'list={{list}}&page={{page}}&overview=' . ($viewing_list === 'overview' ? 'true' : 'false')),
             'OVERVIEW' => $this->coreLanguage->get('user', 'overview'),
             'VIEW_ALL' => $this->membersLanguage->get('members', 'view_all'),
             'GROUPS' => $groups,
-            'VIEW_GROUP_URL' => URL::build('/members', 'group='),
+            'VIEW_GROUP_URL' => \URL::build('/members', 'group='),
             'NEW_MEMBERS' => $this->membersLanguage->get('members', 'new_members'),
             'NEW_MEMBERS_VALUE' => $new_members,
             'FIND_MEMBER' => $this->membersLanguage->get('members', 'find_member'),
             'NAME' => $this->membersLanguage->get('members', 'name'),
-            'SEARCH_URL' => URL::build('/queries/users'),
+            'SEARCH_URL' => \URL::build('/queries/users'),
             'NO_RESULTS_HEADER' => $this->membersLanguage->get('members', 'no_results_header'),
             'NO_RESULTS_TEXT' => $this->membersLanguage->get('members', 'no_results_text'),
             'VIEW_GROUP' => $this->membersLanguage->get('members', 'view_group'),
