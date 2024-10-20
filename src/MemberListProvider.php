@@ -113,7 +113,6 @@ abstract class MemberListProvider {
         $list_members = [];
         $limit = $overview ? 5 : 20;
 
-
         foreach ($rows as $row) {
             if (count($list_members) === $limit) {
                 break;

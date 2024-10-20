@@ -25,6 +25,8 @@ class MemberList extends Query {
         $overview = $_GET['overview'] ?? false;
         $page = $_GET['page'] ?? 1;
 
+        dd($list, $overview, $page, $this->cacheKey($list, $page, $overview));
+
         $this->json($this->cache->fetch($this->cacheKey($list, $page, $overview), function () use ($list, $overview, $page) {
             if (str_starts_with($list, 'group_')) {
                 $members = $this->memberListManager->getList((int) substr($list, 6), true)->getMembers(false, $page, $this->memberListManager);
