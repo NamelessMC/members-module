@@ -79,7 +79,7 @@ class Members extends FrontendPage {
         } else {
             $cacheKey = 'new_members';
         }
-        foreach ($this->cache->get($cacheKey) as $new_member_id) {
+        foreach ($this->cache->retrieve($cacheKey) as $new_member_id) {
             $new_members[] = new User($new_member_id);
         }
 
