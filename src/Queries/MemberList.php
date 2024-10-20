@@ -22,8 +22,10 @@ class MemberList extends Query {
 
     public function handle(): void {
         $list = $_GET['list'];
-        $overview = (bool) $_GET['overview'] ?? false;
+        $overview = $_GET['overview'] ?? false;
         $page = $_GET['page'] ?? 1;
+
+        //dd($list, $overview, $page, $this->cacheKey($list, $page, $overview));
 
         $this->json($this->cache->fetch($this->cacheKey($list, $page, $overview), function () use ($list, $overview, $page) {
             if (str_starts_with($list, 'group_')) {
@@ -37,6 +39,7 @@ class MemberList extends Query {
     }
 
     private function cacheKey(string $list, int $page, bool $overview): string {
+        dd($overview);
         return ($list . '_page_' . $page) . ($overview ? '_overview' : '') . (\Settings::get('member_list_hide_banned', false, 'Members') ? '_hide_banned' : '');
     }
 }
