@@ -18,16 +18,26 @@ use \Paginator;
 
 class Members extends FrontendPage {
 
-    private Language $membersLanguage;
+    private \User $user;
+    private \Smarty $smarty;
+    private \Language $coreLanguage;
+    private \Language $membersLanguage;
+    private \Cache $cache;
     private MemberListManager $memberListManager;
 
     public function __construct(
-        Language $membersLanguage,
+        \User $user,
+        \Smarty $smarty,
+        \Language $coreLanguage,
+        \Language $membersLanguage,
+        \Cache $cache,
         MemberListManager $memberListManager,
     ) {
-        parent::__construct();
-
+        $this->user = $user;
+        $this->smarty = $smarty;
+        $this->coreLanguage = $coreLanguage;
         $this->membersLanguage = $membersLanguage;
+        $this->cache = $cache;
         $this->memberListManager = $memberListManager;
 
         $this->cache->setCache('member_lists');
