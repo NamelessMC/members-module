@@ -40,7 +40,8 @@ class Members extends FrontendPage {
         $this->cache->setCache('member_lists');
     }
 
-    public function render(): void {
+    public function render() {
+        dd('in the module controller! :O');
         //const PAGE = 'members';
         //$page_title = $this->membersLanguage->get('members', 'members');
         //require_once(ROOT_PATH . '/core/templates/frontend_init.php');
