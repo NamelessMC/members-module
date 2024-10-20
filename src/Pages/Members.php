@@ -25,6 +25,8 @@ class Members extends FrontendPage {
         Language $membersLanguage,
         MemberListManager $memberListManager,
     ) {
+        parent::__construct();
+
         $this->membersLanguage = $membersLanguage;
         $this->memberListManager = $memberListManager;
 
