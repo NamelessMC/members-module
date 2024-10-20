@@ -24,6 +24,10 @@ class Index extends PanelPage {
         $this->memberListManager = $memberListManager;
     }
 
+    public function permission(): string {
+        return 'admincp.members';
+    }
+
     public function render() {
         // if (!$user->handlePanelPageLoad('admincp.members')) {
         //     require_once(ROOT_PATH . '/403.php');
