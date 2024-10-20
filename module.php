@@ -5,6 +5,7 @@ use NamelessMC\Framework\Extend;
 return [
     (new Extend\Language(__DIR__ . '/language')),
     (new Extend\FrontendPages)
+        ->templateDirectory(__DIR__ . '/views')
         ->register('/', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
     (new Extend\PanelPages)
         ->register('/', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class)

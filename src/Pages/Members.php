@@ -50,7 +50,6 @@ class Members extends FrontendPage {
     public function render() {
         //const PAGE = 'members';
         //$page_title = $this->membersLanguage->get('members', 'members');
-        //require_once(ROOT_PATH . '/core/templates/frontend_init.php');
 
         if (isset($_GET['group'])) {
             if (!in_array($_GET['group'], json_decode(Settings::get('member_list_viewable_groups', '{}', 'Members'), true))) {
@@ -159,7 +158,5 @@ class Members extends FrontendPage {
             'NO_OVERVIEW_LISTS_ENABLED' => $this->membersLanguage->get('members', 'no_overview_lists_enabled'),
         ]);
 
-        // Load modules + template
-        // \Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
     }
 }
