@@ -27,7 +27,7 @@ class Members extends FrontendPage {
     private MemberListManager $memberListManager;
 
     public function __construct(
-        \DI\Container $container,
+        \TemplateBase $template,
         \User $user,
         \Smarty $smarty,
         \Language $coreLanguage,
@@ -35,7 +35,7 @@ class Members extends FrontendPage {
         \Cache $cache,
         MemberListManager $memberListManager,
     ) {
-        $this->template = $container->get('FrontendTemplate');
+        $this->template = $template;
         $this->user = $user;
         $this->smarty = $smarty;
         $this->coreLanguage = $coreLanguage;
@@ -159,14 +159,14 @@ class Members extends FrontendPage {
         ]);
 
         // Load modules + template
-        // Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
+        \Module::loadPage($user, $pages, $cache, $smarty, [$navigation, $cc_nav, $staffcp_nav], $widgets, $template);
 
-        // $template->onPageLoad();
+        $this->template->onPageLoad();
 
         // require(ROOT_PATH . '/core/templates/navbar.php');
         // require(ROOT_PATH . '/core/templates/footer.php');
 
         // Display template
-        // $template->displayTemplate('members/members.tpl', $smarty);
+        $this->template->displayTemplate('members/members.tpl', $this->smarty);
     }
 }
