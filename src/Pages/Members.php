@@ -44,7 +44,7 @@ class Members extends FrontendPage {
     }
 
     public function viewFile(): string {
-        return 'members/members.tpl';
+        return 'members.tpl';
     }
 
     public function render() {
@@ -157,6 +157,5 @@ class Members extends FrontendPage {
             'NO_MEMBERS_FOUND' => $this->membersLanguage->get('members', 'no_members'),
             'NO_OVERVIEW_LISTS_ENABLED' => $this->membersLanguage->get('members', 'no_overview_lists_enabled'),
         ]);
-
     }
 }

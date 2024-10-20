@@ -4,6 +4,7 @@ use NamelessMC\Framework\Extend;
 
 return [
     (new Extend\Language(__DIR__ . '/language')),
+    // TODO could these be more generic? with `registerFrontend` and `registerPanel`?
     (new Extend\FrontendPages)
         ->templateDirectory(__DIR__ . '/views')
         ->register('/', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
