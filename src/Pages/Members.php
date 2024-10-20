@@ -52,7 +52,7 @@ class Members extends FrontendPage {
     }
 
     public function viewFile(): string {
-        return 'members.tpl';
+        return 'members/members.tpl';
     }
 
     public function render() {

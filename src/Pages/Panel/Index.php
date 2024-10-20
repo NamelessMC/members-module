@@ -29,7 +29,7 @@ class Index extends PanelPage {
     }
 
     public function viewFile(): string {
-        return 'index.tpl';
+        return 'members/index.tpl';
     }
 
     public function pageName(): string {
