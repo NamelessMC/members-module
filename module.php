@@ -7,7 +7,8 @@ return [
     // TODO could these be more generic? with `registerFrontend` and `registerPanel`?
     (new Extend\FrontendPages)
         ->templateDirectory(__DIR__ . '/views')
-        ->register('/', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
+        // TODO, don't require defining page name here and in the class
+        ->register('/', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
     (new Extend\PanelPages)
         ->register('/', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class)
         ->register('/settings', 'members/members', \NamelessMC\Members\Pages\Panel\Settings::class),
