@@ -29,7 +29,7 @@ class Members extends FrontendPage {
         \User $user,
         \Smarty $smarty,
         \Language $coreLanguage,
-        \Language $membersLanguage,
+        #[\DI\Attribute\Inject('membersLanguage')] \Language $membersLanguage,
         \Cache $cache,
         MemberListManager $memberListManager,
     ) {
