@@ -8,6 +8,6 @@ class Install extends Hook
 {
     public function execute(\DI\Container $container)
     {
-        // ...
+        echo 'Installing Members module...';
     }
 }

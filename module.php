@@ -6,6 +6,8 @@ return [
     (new Extend\Language(__DIR__ . '/language')),
     // TODO could these be more generic? with `registerFrontend` and `registerPanel`?
     (new Extend\FrontendPages)
+        // TODO allow registerPageRepository to make page registration class-based if needed.
+        // IE: forms module is dynamically registering pages
         ->templateDirectory(__DIR__ . '/views')
         // TODO, don't require defining page name here and in the class
         ->register('/', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
@@ -25,7 +27,7 @@ return [
     (new Extend\DebugInfo)
         ->provide(\NamelessMC\Members\DebugInfo\Provider::class),
     (new Extend\Events)
-        ->listen(UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
+        ->listen(\UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
     (new Extend\Container)
         ->singleton(\NamelessMC\Members\MemberListManager::class),
     (new Extend\ModuleLifecycle)
@@ -33,4 +35,5 @@ return [
         ->onEnable(\NamelessMC\Members\Lifecycle\Enable::class)
         ->onDisable(\NamelessMC\Members\Lifecycle\Disable::class),
     // TODO: assets? see if anything in AssetTree can be extracted here
+    // TODO: api endpoints & transformers
 ];
