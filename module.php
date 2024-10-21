@@ -11,7 +11,7 @@ return [
         ->register('/', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
     (new Extend\PanelPages)
         ->templateDirectory(__DIR__ . '/panel_views')
-        // TODO, don't require defining page permission here and in the class
+        // TODO, don't require defining page permission and name here and in the class
         ->register('/', 'member_lists', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class, 'admincp.members')
         ->register('/settings', 'members_settings', 'members/member_list_settings', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members'),
     (new Extend\Queries)
@@ -28,5 +28,9 @@ return [
         ->listen(UserRegisteredEvent::class, \NamelessMC\Members\Listeners\UserRegisteredListener::class),
     (new Extend\Container)
         ->singleton(\NamelessMC\Members\MemberListManager::class),
+    (new Extend\ModuleLifecycle)
+        ->onInstall(\NamelessMC\Members\Lifecycle\Install::class)
+        ->onEnable(\NamelessMC\Members\Lifecycle\Enable::class)
+        ->onDisable(\NamelessMC\Members\Lifecycle\Disable::class),
     // TODO: assets? see if anything in AssetTree can be extracted here
 ];
