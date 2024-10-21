@@ -6,8 +6,8 @@ use NamelessMC\Framework\ModuleLifecycle\Hook;
 
 class Install extends Hook
 {
-    public function execute(\DI\Container $container)
+    public function execute(): void
     {
-        echo 'Installing Members module...';
+        dd('Installing Members module...');
     }
 }
