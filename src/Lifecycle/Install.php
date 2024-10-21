@@ -8,6 +8,6 @@ class Install extends Hook
 {
     public function execute(): void
     {
-        dd('Installing Members module...');
+        echo "Members module installed!";
     }
 }
