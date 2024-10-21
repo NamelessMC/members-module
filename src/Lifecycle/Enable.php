@@ -8,6 +8,6 @@ class Enable extends Hook
 {
     public function execute(): void
     {
-        echo "Members module enabled!";
+        dd("Members module enabled!");
     }
 }

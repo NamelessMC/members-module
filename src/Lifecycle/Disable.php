@@ -8,6 +8,6 @@ class Disable extends Hook
 {
     public function execute(): void
     {
-        echo "Members module disabled!";
+        dd("Members module disabled!");
     }
 }
