@@ -14,8 +14,8 @@ return [
     (new Extend\PanelPages)
         ->templateDirectory(__DIR__ . '/panel_views')
         // TODO, don't require defining page permission and name here and in the class
-        ->register('/', 'member_lists', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class, 'admincp.members')
-        ->register('/settings', 'members_settings', 'members/member_list_settings', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members'),
+        ->register('/', 'member_lists', 'members/member_lists', \NamelessMC\Members\Pages\Panel\Index::class, 'admincp.members', 'fas fa-users')
+        ->register('/settings', 'members_settings', 'members/member_list_settings', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members', 'fas fa-cog'),
     (new Extend\Queries)
         ->register('/member_list', \NamelessMC\Members\Queries\MemberList::class),
     (new Extend\Permissions)
