@@ -20,7 +20,7 @@ class Settings extends PanelPage {
         $this->smarty = $smarty;
         $this->cache = $cache;
         $this->coreLanguage = $coreLanguage;
-        dd($container->getBindings());
+        dd(\Illuminate\Container\Container::getInstance()->getBindings());
         $this->membersLanguage = $container->get('membersLanguage');
     }
 
