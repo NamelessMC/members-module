@@ -14,14 +14,13 @@ class Settings extends PanelPage {
     public function __construct(
         \Smarty $smarty,
         \Cache $cache,
-        \Language $coreLanguage,
-        \Illuminate\Container\Container $container,
+        \Language $coreLanguage
+        // \Illuminate\Container\Container $container, TODO, why doesn't this give same instance?
     ) {
         $this->smarty = $smarty;
         $this->cache = $cache;
         $this->coreLanguage = $coreLanguage;
-        dd(\Illuminate\Container\Container::getInstance()->getBindings());
-        $this->membersLanguage = $container->get('membersLanguage');
+        $this->membersLanguage = \Illuminate\Container\Container::getInstance()->get('membersLanguage');
     }
 
     public function permission(): string {
