@@ -15,12 +15,12 @@ class Settings extends PanelPage {
         \Smarty $smarty,
         \Cache $cache,
         \Language $coreLanguage,
-        \Language $membersLanguage,
+        \Illuminate\Container\Container $container,
     ) {
         $this->smarty = $smarty;
         $this->cache = $cache;
         $this->coreLanguage = $coreLanguage;
-        $this->membersLanguage = $membersLanguage;
+        $this->membersLanguage = $container->get('membersLanguage');
     }
 
     public function permission(): string {

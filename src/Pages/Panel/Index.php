@@ -15,12 +15,12 @@ class Index extends PanelPage {
     public function __construct(
         \Smarty $smarty,
         \Language $coreLanguage,
-        \Language $membersLanguage,
+        \Illuminate\Container\Container $container,
         MemberListManager $memberListManager,
     ) {
         $this->smarty = $smarty;
         $this->coreLanguage = $coreLanguage;
-        $this->membersLanguage = $membersLanguage;
+        $this->membersLanguage = $container->get('membersLanguage');
         $this->memberListManager = $memberListManager;
     }
 

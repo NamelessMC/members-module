@@ -30,15 +30,15 @@ class Members extends FrontendPage {
         \User $user,
         \Smarty $smarty,
         \Language $coreLanguage,
-        \Language $membersLanguage,
         \Cache $cache,
         MemberListManager $memberListManager,
+        \Illuminate\Container\Container $container,
         $templatePagination,
     ) {
         $this->user = $user;
         $this->smarty = $smarty;
         $this->coreLanguage = $coreLanguage;
-        $this->membersLanguage = $membersLanguage;
+        $this->membersLanguage = $container->get('membersLanguage');
         $this->cache = $cache;
         $this->memberListManager = $memberListManager;
         $this->templatePagination = $templatePagination;
