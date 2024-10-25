@@ -20,7 +20,6 @@ class Settings extends PanelPage {
         $this->smarty = $smarty;
         $this->cache = $cache;
         $this->coreLanguage = $coreLanguage;
-        echo '<br>' . spl_object_id($container) . '<br>' . spl_object_id(\Illuminate\Container\Container::getInstance()) . '<br>';
         $this->membersLanguage = $container->get('membersLanguage');
     }
 
