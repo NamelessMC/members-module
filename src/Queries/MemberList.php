@@ -33,7 +33,7 @@ class MemberList extends Query {
             }
 
             return $members;
-        }), 60);
+        }, 60));
     }
 
     private function cacheKey(string $list, int $page, bool $overview): string {
