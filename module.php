@@ -9,7 +9,7 @@ return [
         // TODO allow registerPageRepository to make page registration class-based if needed.
         // IE: forms module is dynamically registering pages
         // TODO, don't require defining page name here and in the class
-        ->register('/members', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, true),
+        ->register('/members', 'members', 'members/members', \NamelessMC\Members\Pages\Members::class, false),
     (new Extend\PanelPages)
         // TODO, don't require defining page permission and name here and in the class
         ->register('/members/settings', 'members_settings', 'members/member_list_settings', \NamelessMC\Members\Pages\Panel\Settings::class, 'admincp.members', 'fas fa-cogs')
